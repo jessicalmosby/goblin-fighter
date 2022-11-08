@@ -51,4 +51,36 @@ function displayGoblins() {
 }
 displayGoblins();
 
+function goblinClickHandler(goblinData) {
+    if (goblinData.hp <= 0) return;
+    if (Math.random() < 0.33) {
+        goblinData.hp--;
+        alert('You hit ' + goblinData.name);
+    } else {
+        alert('You tried to hit ' + goblinData.name + ' but missed.');
+    }
+    if (Math.random() < 0.5) {
+        playerHP--;
+        alert(goblinData.name + ' hit you!');
+    } else {
+        alert(goblinData.name + ' tried to hit you, but missed!');
+    }
+
+    if (goblinData.hp === 0) {
+        defeatedGoblinCount++;
+    }
+
+    if (playerHP === 0) {
+        adventurerImgEl.classList.add('game over');
+        adventurerImg2El.classList.add('game over');
+        alert('GAME OVER!');
+    }
+
+    adventurerHPEl.textContent = playerHP;
+    defeatedNumberEl.textContent = defeatedGoblinCount;
+
+    const hpEl = document.getElementById(`goblin-hp-${goblinData.id}`);
+    faceEl.textContent = goblinData.hp > 0 ? '😈' : '🔥';
+}
+
 // (don't forget to call any display functions you want to run on page load!)
