@@ -25,3 +25,34 @@ Additional considerations:
     -   What needs to live in a persistence layer?
 -   Is there some state we need to initialize?
 -   Ask: should any of this work be abstracted into functions? (i.e., is the work complicated? can it be reused?)
+
+![wireframe](/assets/wireframe.png)
+
+### State
+
+-How many goblins have been defeated<br>
+-Player HP<br>
+-Goblin HP<br>
+-#Current ID (in order to create new goblins with ID's)<br>
+
+### Events
+
+-user input<br>
+-goblin clicks<br>
+-Alerts with no change:<br>
+--You missed<br>
+--{name} missed<br>
+-Alerts with change:<br>
+--You hit {name} = {name}HP--<br>
+--{name} hit you = your HP--<br>
+-when HP is 0<br>
+--Alert game over<br>
+--rotate player emoji 90 deg.<br>
+--Form: user inputs Goblin name, when submit button is clicked:<br>
+---make new goblin<br>
+---add object to goblin array<br>
+---update list display:<br>
+---clear out the list DOM<br>
+---loop through the goblins<br>
+---render a new goblin el. for ea. item<br>
+---append ea. el. to the container el. (goblin-stats)<br>
