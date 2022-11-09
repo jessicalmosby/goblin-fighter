@@ -19,7 +19,7 @@ let goblins = [
 let currentId = 3;
 
 /* Events */
-form.addEvenListener('sumbit', (e) => {
+form.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = new FormData(form);
     const goblinName = data.get('goblin-name');
@@ -80,6 +80,9 @@ function goblinClickHandler(goblinData) {
     defeatedNumberEl.textContent = defeatedGoblinCount;
 
     const hpEl = document.getElementById(`goblin-hp-${goblinData.id}`);
+    hpEl.textContent = goblinData.hp < 0 ? 0 : goblinData.hp;
+
+    const faceEl = document.getElementById(`goblin-face-${goblinData.id}`);
     faceEl.textContent = goblinData.hp > 0 ? '😈' : '🔥';
 }
 
