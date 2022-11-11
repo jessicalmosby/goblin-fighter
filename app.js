@@ -21,6 +21,7 @@ let currentId = 3;
 /* Events */
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    if (playerHP <= 0) return;
     const data = new FormData(form);
     const goblinName = data.get('goblin-name');
 
@@ -35,24 +36,9 @@ form.addEventListener('submit', (e) => {
     displayGoblins();
 });
 
-/* Display Functions */
-function displayGoblins() {
-    goblinListEl.textContent = '';
-
-    for (let goblin of goblins) {
-        const goblinEl = renderGoblin(goblin);
-
-        goblinEl.addEventListener('click', () => {
-            goblinClickHandler(goblin);
-        });
-
-        goblinListEl.append(goblinEl);
-    }
-}
-displayGoblins();
-
 function goblinClickHandler(goblinData) {
     if (goblinData.hp <= 0) return;
+    if (playerHP <= 0) return;
     if (Math.random() < 0.33) {
         goblinData.hp--;
         alert('You hit ' + goblinData.name);
@@ -71,9 +57,7 @@ function goblinClickHandler(goblinData) {
     }
 
     if (playerHP === 0) {
-        adventurerImgEl.classList.add('game over');
-        adventurerImg2El.classList.add('game over');
-        alert('GAME OVER!');
+        alert('GAME OVER');
     }
 
     adventurerHPEl.textContent = playerHP;
@@ -86,4 +70,19 @@ function goblinClickHandler(goblinData) {
     faceEl.textContent = goblinData.hp > 0 ? '😈' : '🔥';
 }
 
+/* Display Functions */
+function displayGoblins() {
+    goblinListEl.textContent = '';
+
+    for (let goblin of goblins) {
+        const goblinEl = renderGoblin(goblin);
+
+        goblinEl.addEventListener('click', () => {
+            goblinClickHandler(goblin);
+        });
+
+        goblinListEl.append(goblinEl);
+    }
+}
 // (don't forget to call any display functions you want to run on page load!)
+displayGoblins();
