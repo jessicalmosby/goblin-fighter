@@ -1,0 +1,15 @@
+#fin {
+    height: 100px;
+    width: 98px;
+}
+
+#jake {
+    height: 90px;
+    width: 150px;
+}
+
+main {
+    display: flex;
+    background-image: url(/assets/adventure\ bg.png);
+    background-size: cover;
+}

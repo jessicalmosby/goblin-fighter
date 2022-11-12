@@ -25,3 +25,48 @@ Additional considerations:
     -   What needs to live in a persistence layer?
 -   Is there some state we need to initialize?
 -   Ask: should any of this work be abstracted into functions? (i.e., is the work complicated? can it be reused?)
+
+Tasks Points
+On page load, see HP and two default goblins 2
+Add a new goblin with default HP and name 2
+Goblin click handler 6
+
+-   Uses Math.random() function to determine hits
+-   Alerts user whether they hit the goblin or not and updates HP
+-   Alerts user whether the goblin hit them or not and updates HP
+    Show number of vanquished goblins 2
+    Display goblins differently and disable clicking when defeated 2
+    Disable all functionality when the game is over 2
+    Functions
+    PURE: `renderGoblin(goblin)` : return DOM node` 2 IMPURE: `displayGoblins()` : clears DOM and appends goblin data to goblin list DOM node`
+
+![wireframe](/assets/wireframe.png)
+
+### State
+
+-How many goblins have been defeated<br>
+-Player HP<br>
+-Goblin HP<br>
+-#Current ID (in order to create new goblins with ID's)<br>
+
+### Events
+
+-user input<br>
+-goblin clicks<br>
+-Alerts with no change:<br>
+--You missed<br>
+--{name} missed<br>
+-Alerts with change:<br>
+--You hit {name} = {name}HP--<br>
+--{name} hit you = your HP--<br>
+-when HP is 0<br>
+--Alert game over<br>
+--rotate player emoji 90 deg.<br>
+--Form: user inputs Goblin name, when submit button is clicked:<br>
+---make new goblin<br>
+---add object to goblin array<br>
+---update list display:<br>
+---clear out the list DOM<br>
+---loop through the goblins<br>
+---render a new goblin el. for ea. item<br>
+---append ea. el. to the container el. (goblin-stats)<br>
